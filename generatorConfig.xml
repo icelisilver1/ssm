@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- classPathEntry:数据库的JDBC驱动的jar包地址 
+	<classPathEntry location="E:\oracle\product\10.2.0\db_1\jdbc\lib\ojdbc14.jar" />
+	-->
+	<classPathEntry location="D:\software\db\mysql\mysql-connector-java-5.1.30.jar"/>
+	<context id="MySqlTables" defaultModelType="flat">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释和时间戳  true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+			<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		</commentGenerator>
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver" 
+    		connectionURL="jdbc:mysql://127.0.0.1:3306/autocode?useUnicode=true&amp;characterEncoding=UTF-8" 
+			userId="root" password="1234">
+		</jdbcConnection>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+		
+		<!-- 自动生成Pojo类和Example类；
+		targetProject：自动生成代码的位置(可以使用相对位置和绝对位置)；
+		targetPackage：包路径 -->
+		<javaModelGenerator
+			targetPackage="com.framework.ssm.model.entity"
+			targetProject="ssm">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->       
+      		<property name="enableSubPackages" value="true" />  
+    		<!-- 从数据库返回的值被清理前后的空格  -->   
+      		<property name="trimStrings" value="true" />  
+		</javaModelGenerator>
+
+		<!-- 自动生成用于mapping的xml配置文件；
+		targetProject：自动生成代码的位置(可以使用相对位置和绝对位置)；
+		targetPackage：包路径 -->
+		<sqlMapGenerator
+			targetPackage="com.framework.ssm.model.mapping"
+			targetProject="ssm">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->       
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- 自动生成用于mapper类文件；
+		targetProject：自动生成代码的位置(可以使用相对位置和绝对位置)；
+		targetPackage：包路径 -->
+		<javaClientGenerator 
+			type="XMLMAPPER"
+			targetPackage="com.framework.ssm.model.mapper"
+			targetProject="ssm">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->       
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- schema: 库名；tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 
+		<table schema="autocode" tableName="%">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		 -->
+		<table schema="autocode" tableName="test" domainObjectName="Test">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+	</context>
+</generatorConfiguration>
