@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.framework</groupId>
-	<artifactId>ssm1</artifactId>
+	<artifactId>ssm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -165,9 +165,8 @@
 			<version>1.9</version>
 		</dependency>
 	</dependencies>
-	
 	<build>
-		<finalName>ssm1</finalName>
+		<finalName>ssm</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
